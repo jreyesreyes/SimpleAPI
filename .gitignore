@@ -33,3 +33,6 @@ node_modules/
 
 .idea/
 build/
+
+# Java automation
+auto_java/target

@@ -39,7 +39,6 @@ jobs:
     - name: Build and start app
       run: |
         yarn build
-        yarn start
   
   build:
     needs: container-job

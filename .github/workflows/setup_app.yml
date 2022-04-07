@@ -10,15 +10,20 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
+  # Label of the container job
+  container-job:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: node:10.18-jessie
+    
+    services:
+      redis:
+        image: redis
+        # Map TCP port 9999 on Docker host to a random free port on the Redis container
+        ports:
+          - 9999/tcp
+    
     steps:
     - uses: actions/checkout@v3
     

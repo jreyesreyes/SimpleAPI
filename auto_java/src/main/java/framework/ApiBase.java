@@ -13,24 +13,24 @@ public class ApiBase {
     }
 
     //Execute any GET endpoint according URL by parameter
-    public HttpResponse<String> exec_get(String pURL) throws IOException, InterruptedException {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder(URI.create(pURL))
+    public HttpResponse<String> execGet(String pURL) throws IOException, InterruptedException {
+        HttpClient _client = HttpClient.newHttpClient();
+        HttpRequest _request = HttpRequest.newBuilder(URI.create(pURL))
                 .build();
 
-        return client.send(request,
+        return _client.send(_request,
                 HttpResponse.BodyHandlers.ofString());
     }
 
     //Execute any POST endpoint according URL by parameter
-    public HttpResponse<String> exec_post(String pURL, String pBody) throws IOException, InterruptedException {
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder(URI.create(pURL))
+    public HttpResponse<String> execPost(String pURL, String pBody) throws IOException, InterruptedException {
+        HttpClient _client = HttpClient.newHttpClient();
+        HttpRequest _request = HttpRequest.newBuilder(URI.create(pURL))
                 .POST(HttpRequest.BodyPublishers.ofString(pBody))
                 .header("Content-type", "application/json")
                 .build();
 
-        return client.send(request,
+        return _client.send(_request,
                 HttpResponse.BodyHandlers.ofString());
 
     }

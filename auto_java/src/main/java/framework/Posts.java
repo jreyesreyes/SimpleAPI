@@ -7,14 +7,14 @@ public class Posts extends ApiBase{
 
     //Method to validate foo API
     public ApiResponse postID(String pNum) throws IOException, InterruptedException {
-        String sBody = "{ \"id\": " + pNum + " }";
+        String _body = "{ \"id\": " + pNum + " }";
         if (pNum.equals("NOPROPERTY")){
-            sBody = "{}";
+            _body = "{}";
         }
-        HttpResponse<String> response = exec_post(urlBase() + "/api/foo/",
-                sBody);
+        HttpResponse<String> response = execPost(urlBase() + "/api/foo/",
+                _body);
 
-        return new ApiResponse(response);
+        return new ApiResponse(response, _body);
     }
 
 

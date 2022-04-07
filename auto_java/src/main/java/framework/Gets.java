@@ -8,9 +8,9 @@ public class Gets extends ApiBase {
     //API to validate if number is divisible by 2
     public ApiResponse getDivisibleNum(String pNum)
             throws IOException, InterruptedException {
-        HttpResponse<String> response = exec_get(urlBase() + "/api/foo/" + pNum);
+        HttpResponse<String> _response = execGet(urlBase() + "/api/foo/" + pNum);
 
-        return new ApiResponse(response);
+        return new ApiResponse(_response);
     }
 
 

@@ -26,16 +26,11 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-    
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
 
     - name: Build and start app
       uses: comchangs/action-yarn@v0.1-beta
       with:
+          build: yarn build
           start: yarn start
           wait-on: 'http://localhost:9999'
   

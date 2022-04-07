@@ -37,8 +37,10 @@ jobs:
     - run: npm test
 
     - name: Build and start app
-      run: |
-        yarn build
+      with:
+          build: yarn run build
+          start: yarn start
+          wait-on: 'http://localhost:9999'
   
   build:
     needs: container-job

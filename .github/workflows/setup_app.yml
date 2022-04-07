@@ -37,7 +37,10 @@ jobs:
     - run: npm test
 
     - name: Build and start app
-      run: yarn build
+      run: |
+        yarn build
+        curl http://localhost:9999/api/foo/12
+        yarn start
   
   build:
     needs: container-job

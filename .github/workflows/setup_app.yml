@@ -39,8 +39,6 @@ jobs:
     - name: Build and start app
       run: |
         yarn build
-        apt-get install curl
-        curl http://localhost:9999/api/foo/12
         yarn start
   
   build:

@@ -15,7 +15,7 @@ jobs:
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
     # Docker Hub image that `container-job` executes in
-    #container: node:16.14.2-alpine3.15
+    container: node:16.14.2-alpine3.15
     
     services:
       redis:
@@ -30,11 +30,12 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Build and start app
-      uses: comchangs/action-yarn@v0.1-beta
+      uses: CultureHQ/actions-yarn@v1.0.1
       with:
-          build: yarn build
+          build: yarn run build --if-present
           start: yarn start
           wait-on: 'http://localhost:9999'
+
   
   build:
     needs: container-job

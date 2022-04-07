@@ -22,9 +22,5 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
-      run: mvn -B package --file auto_java/pom.xml -Dmaven.test.skip=true
-    - name: Run automation testing
-      run: |
-        junit auto_java/src/test/java/TestFooGet.java
-        junit auto_java/src/test/java/TestFooPost.java
+    - name: Build with Maven and run automation testing
+      run: mvn -B package --file auto_java/pom.xml -Dtest=TestFoo*

@@ -35,12 +35,4 @@ jobs:
         cache: maven
     - name: Build with Maven and run automation testing
       run: mvn -B package --file auto_java/pom.xml -Dtest=TestFoo*
-    
-  publish:
-    runs-on: 
-        strategy:
-        matrix:
-          os: [ubuntu-latest]
-          
-    needs: start_app
-    
+      

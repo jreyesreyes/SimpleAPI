@@ -36,7 +36,6 @@ jobs:
     - name: Build and start app
       uses: comchangs/action-yarn@v0.1-beta
       with:
-          build: yarn run build
           start: yarn start
           wait-on: 'http://localhost:9999'
   

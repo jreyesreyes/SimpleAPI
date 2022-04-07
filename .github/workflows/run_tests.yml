@@ -15,7 +15,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-    container: node:16.14.2-alpine3.15
 
     steps:
     - uses: actions/checkout@v3

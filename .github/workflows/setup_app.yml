@@ -32,7 +32,7 @@ jobs:
     - name: Build and start app
       uses: CultureHQ/actions-yarn@v1.0.1
       with:
-          build: yarn run build --if-present
+          build: yarn run build
           start: yarn start
           wait-on: 'http://localhost:9999'
 

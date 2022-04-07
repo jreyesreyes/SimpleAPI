@@ -23,8 +23,6 @@ jobs:
         # Map TCP port 9999 on Docker host to a random free port on the Redis container
         ports:
           - 9999/tcp
-      #tty: "true"
-      #stdin_open: "true"
     
     steps:
     - uses: actions/checkout@v3
@@ -41,22 +39,4 @@ jobs:
     - name: Build and start app
       run: |
         yarn build
-        yarn start
-  
-  build:
-    needs: container-job
-    runs-on: ${{matrix.os}}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 11
-      uses: actions/setup-java@v3
-      with:
-        java-version: '11'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven and run automation testing
-      run: mvn -B package --file auto_java/pom.xml -Dtest=TestFoo*
+        #yarn start

@@ -37,6 +37,7 @@ jobs:
     - run: npm test
 
     - name: Build and start app
+      uses: ./
       with:
           build: yarn run build
           start: yarn start

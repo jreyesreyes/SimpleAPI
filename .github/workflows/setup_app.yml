@@ -15,7 +15,7 @@ jobs:
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
     # Docker Hub image that `container-job` executes in
-    container: node:16.14.2-alpine3.15
+    #container: node:16.14.2-alpine3.15
     
     services:
       redis:
@@ -23,6 +23,8 @@ jobs:
         # Map TCP port 9999 on Docker host to a random free port on the Redis container
         ports:
           - 9999/tcp
+      tty: "true"
+      stdin_open: "true"
     
     steps:
     - uses: actions/checkout@v3

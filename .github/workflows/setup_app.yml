@@ -31,5 +31,7 @@ jobs:
     - run: npm run build --if-present
     - run: npm test
 
-    - name: Build app
-      run: yarn build
+    - name: Build and start app
+      run: |
+        yarn build
+        yarn start

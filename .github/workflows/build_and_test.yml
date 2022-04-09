@@ -49,7 +49,7 @@ jobs:
     - name: Build application
       run: |
         yarn build
-        ts-node-dev --respawn src/index.ts
+        yarn start
     
     - name: actions-curl
       uses: enflo/curl-action@v1.2

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
@@ -33,11 +35,8 @@ jobs:
       run: yarn build
     
     - name: actions-curl
-      # You may pin to the exact commit or the version.
-      # uses: alesil/actions-curl@3bdc94d2e231b65cfafd795a820f99890b0603f6
       uses: alesil/actions-curl@v1.2
       with:
-        # Curl parameters
         curl: http://127.0.0.1:9999/api/foo/12
   
     - name: Set up JDK 17

@@ -16,7 +16,14 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node-version: [16.x]
-        
+    container: node:16.14.2-alpine3.15     # Docker Hub image that `container-job` executes in
+    services:
+      redis:
+        image: redis
+        # Map TCP port 9999 on Docker host to a random free port on the Redis container
+        ports:
+          - 9999/tcp
+          
     steps:
     - uses: actions/checkout@v3
     

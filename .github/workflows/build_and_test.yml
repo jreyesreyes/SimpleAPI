@@ -47,9 +47,15 @@ jobs:
     - run: npm test   
     
     - name: Build application
-      run: |
-        yarn build
-        yarn start
+      run: yarn build
+
+    - name: Push the branch
+      uses: satackey/push-prebuilt-action@v0.1
+      with:
+        push-branch: release-main
+        docker-registry: docker.io
+        docker-user: ${{ secrets.DOCKER_USER }}
+        docker-token: ${{ secrets.DOCKERHUB_TOKEN }}
     
     - name: actions-curl
       uses: enflo/curl-action@v1.2

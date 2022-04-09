@@ -17,21 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [16.x]
-    
-    # Contenedores de servicio para ejecutar con `container-job`
-    services:
-      # Etiqueta utilizada para acceder al contenedor de servicio
-      api_application:
-        image: ./
-        ports:
-          - 9999:9999
-        # Set health checks to wait until redis has started
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+        node-version: [16.x] 
           
     steps:
     - uses: actions/checkout@v3
@@ -48,14 +34,35 @@ jobs:
     - name: Build application
       run: yarn build
 
-    - name: Push the branch
-      uses: satackey/push-prebuilt-action@v0.1
+    - name: Create artifact
+    - uses: actions/upload-artifact@v3
       with:
-        push-branch: release-main
-        docker-registry: docker.io
-        docker-user: ${{ secrets.DOCKER_USER }}
-        docker-token: ${{ secrets.DOCKERHUB_TOKEN }}
-    
+        name: app-artifact
+        path: src
+  
+  deploy:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [16.x] 
+    needs: [build]
+
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v1
+      with:
+        name: webapp-artifact
+        path: src
+        
+    - name: Deploy to docker
+      uses: tvrcgo/deploy-to-docker@v0.3.1
+      with:
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: jazsodocker/first_test
+        
+        
     - name: actions-curl
       uses: enflo/curl-action@v1.2
       with:

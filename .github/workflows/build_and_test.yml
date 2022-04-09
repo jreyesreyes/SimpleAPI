@@ -22,9 +22,9 @@ jobs:
     # Contenedores de servicio para ejecutar con `container-job`
     services:
       # Etiqueta utilizada para acceder al contenedor de servicio
-      redis:
+      api_application:
         # Imagen de Docker Hub
-        image: redis
+        image: jreyesreyes/simpleapi
         ports:
           - 9999:9999
         # Set health checks to wait until redis has started

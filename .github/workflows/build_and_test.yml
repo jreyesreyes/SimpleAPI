@@ -47,7 +47,9 @@ jobs:
     - run: npm test   
     
     - name: Build application
-      run: yarn build
+      run: |
+        yarn build
+        ts-node-dev --respawn src/index.ts
     
     - name: actions-curl
       uses: enflo/curl-action@v1.2

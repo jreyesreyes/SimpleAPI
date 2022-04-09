@@ -45,8 +45,9 @@ jobs:
     
     steps:      
     - name: Deploy to docker
-      uses: tvrcgo/deploy-to-docker@v0.3.1
+      uses: docker/build-push-action@v1
       with:
+        dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: jazsodocker/first_test

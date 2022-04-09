@@ -33,14 +33,6 @@ jobs:
     
     - name: Build application
       run: yarn build
-
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        # Artifact name
-        name: app-artifact
-        # A file, directory or wildcard pattern that describes what to upload
-        path: src
   
   deploy:
     runs-on: ${{ matrix.os }}
@@ -50,15 +42,7 @@ jobs:
         os: [ubuntu-latest]
         node-version: [16.x] 
     
-    steps:
-    - name: Download a Build Artifact
-      uses: actions/download-artifact@v3.0.0
-      with:
-        # Artifact name
-        name: apiapp-artifact
-        # Destination path
-        path: apiapp
-        
+    steps:      
     - name: Deploy to docker
       uses: tvrcgo/deploy-to-docker@v0.3.1
       with:

@@ -42,11 +42,12 @@ jobs:
   
   deploy:
     runs-on: ${{ matrix.os }}
+    needs: [build]
     strategy:
       matrix:
         os: [ubuntu-latest]
         node-version: [16.x] 
-    needs: [build]
+    
 
     steps:
     - name: Download artifact

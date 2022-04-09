@@ -23,8 +23,6 @@ jobs:
     services:
       # Etiqueta utilizada para acceder al contenedor de servicio
       api_application:
-        # Imagen de Docker Hub
-        image: jreyesreyes/simpleapi
         ports:
           - 9999:9999
         # Set health checks to wait until redis has started

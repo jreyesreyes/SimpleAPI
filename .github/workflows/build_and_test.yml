@@ -42,10 +42,10 @@ jobs:
       run: mvn clean --file auto_java/pom.xml
 
     - name: Build automation module
-      run: mvn -q test --file auto_java/pom.xml -Dtest=TestFooGet*
+      run: mvn -q test --file auto_java/pom.xml -Dtest=TestFooPost*
 
     - name: Build automation module
-      run: mvn -q test --file auto_java/pom.xml -Dtest=TestFooPost*
+      run: mvn -q test --file auto_java/pom.xml -Dtest=TestFooGet*
 
     - name: Stop docker container
       run: |

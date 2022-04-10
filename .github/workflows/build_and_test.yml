@@ -27,6 +27,11 @@ jobs:
 
     #- uses: thinkdolabs/curl@v1
     - uses: dangmai/get-apt-package-version@v1.2.0
+      with:
+        ppa: nextcloud-devs/client
+        package: nextcloud-desktop
+        baseImage: ubuntu:focal
+
     - run: |
         apt-get install sudo
         sudo apt-get update

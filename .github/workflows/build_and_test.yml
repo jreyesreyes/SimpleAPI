@@ -3,8 +3,6 @@
 name: Build app with one workflow
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 

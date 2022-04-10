@@ -25,6 +25,9 @@ jobs:
     - name: Build application
       run: yarn build
 
+    - name: actions-curl
+      uses: enflo/curl-action@v1.2
+
     - uses: docker-practice/actions-setup-docker@1.0.9
 
     - name: Build docker container
@@ -34,6 +37,7 @@ jobs:
       run: |
         docker run -d -p 9999:9999 --name docker-api dockerapiapp
         docker container ls
+        curl http://localhost:9999/api/foo/12
 
 
         

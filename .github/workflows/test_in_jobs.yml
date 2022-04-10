@@ -3,8 +3,6 @@
 name: Build app with using jobs (Disabled)
 
 on:
-  push:
-    branches: [ disabled ]
   pull_request:
     branches: [ disabled ]
 

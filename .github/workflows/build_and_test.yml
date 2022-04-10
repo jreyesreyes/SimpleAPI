@@ -25,8 +25,7 @@ jobs:
     - name: Build application
       run: yarn build
 
-    - name: actions-curl
-      uses: alesil/actions-curl@v1.2
+    - uses: thinkdolabs/curl@v1
 
     - uses: docker-practice/actions-setup-docker@1.0.9
 

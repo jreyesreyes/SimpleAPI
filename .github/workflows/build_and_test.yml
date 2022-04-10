@@ -35,7 +35,16 @@ jobs:
         docker run -d -p 9999:9999 --name docker-api dockerapiapp
         docker container ls
 
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
 
+    - name: Build with Maven and run automation testing
+      run: mvn -B package --file auto_java/pom.xml -Dtest=TestFoo*
 
-        
+    - name: Stop docker container
+      run: docker stop docker-api
          

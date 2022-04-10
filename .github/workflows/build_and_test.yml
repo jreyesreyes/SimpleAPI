@@ -25,10 +25,10 @@ jobs:
     - name: Build application
       run: yarn build
 
-    - name: actions-curl
-      uses: enflo/curl-action@v1.2
+    #- name: actions-curl
+    #  uses: enflo/curl-action@v1.2
 
-    - uses: docker-practice/actions-setup-docker@1.0.9
+    #- uses: docker-practice/actions-setup-docker@1.0.9
 
     - name: Build docker container
       run: docker build -t dockerapiapp .

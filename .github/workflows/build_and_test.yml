@@ -28,7 +28,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install curl
 
-    - uses: docker-practice/actions-setup-docker@1.0.9
+    - uses: docker/build-push-action@v2.10.0
 
     - uses: actions/checkout@v3
 

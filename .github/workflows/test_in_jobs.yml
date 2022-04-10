@@ -1,6 +1,6 @@
 # This workflow build and execute the api automation testing in different jobs
 
-name: Build app with one workflow
+name: Build app with using jobs (Disabled)
 
 on:
   push:

@@ -27,7 +27,13 @@ jobs:
     - name: Build application
       run: yarn build
 
-    - run: docker version
+    - name: Build docker container
+      run: docker build -t dockerapiapp .
+
+    - name: Run docker container
+      run: |
+        docker run -d -p 9999:9999 --name docker-api dockerapiapp
+        docker container ls
 
 
 

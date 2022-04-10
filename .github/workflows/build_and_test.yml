@@ -13,43 +13,34 @@ on:
 
 jobs:  
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [16.x] 
+    runs-on: ubuntu-latest
     container: node:16.14.2-alpine3.15
 
     steps:
     - uses: actions/checkout@v3
-    
-    # name: Use Node.js ${{ matrix.node-version }}
-    #  uses: actions/setup-node@v3
-    #  with:
-    #    node-version: ${{ matrix.node-version }}
-    #    cache: 'npm'
+
     - run: npm ci
     - run: npm run build --if-present
-    #- run: npm test
     
     - name: Build application
       run: yarn build
-  
-  deploy:
-    runs-on: ${{ matrix.os }}
+
+  create-container:
     needs: [build]
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [16.x] 
-    
-    steps:      
-    - name: Deploy to docker
-      uses: docker/build-push-action@v1
-      with:
-        dockerfile: Dockerfile
-        username: ${{ secrets.DOCKER_USER }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: jazsodocker/first_test
+    runs-on: ubuntu-latest
+    container: node:16.14.2-alpine3.15
+
+    steps:
+      - uses: docker-practice/actions-setup-docker@1.0.9
+
+      -name: Build docker container
+        run: docker build -t dockerapiapp .
+
+      - name: Run docker container
+        run: |
+          docker run -d -p 9999:9999 --name docker-api dockerapiapp
+          docker container ls
+
+
         
          

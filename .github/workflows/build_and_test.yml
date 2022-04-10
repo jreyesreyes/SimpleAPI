@@ -25,21 +25,15 @@ jobs:
     - name: Build application
       run: yarn build
 
-  create-container:
-    needs: [build]
-    runs-on: ubuntu-latest
-    container: node:16.14.2-alpine3.15
+    - uses: docker-practice/actions-setup-docker@1.0.9
 
-    steps:
-      - uses: docker-practice/actions-setup-docker@1.0.9
+    - name: Build docker container
+      run: docker build -t dockerapiapp .
 
-      -name: Build docker container
-        run: docker build -t dockerapiapp .
-
-      - name: Run docker container
-        run: |
-          docker run -d -p 9999:9999 --name docker-api dockerapiapp
-          docker container ls
+    - name: Run docker container
+      run: |
+        docker run -d -p 9999:9999 --name docker-api dockerapiapp
+        docker container ls
 
 
         

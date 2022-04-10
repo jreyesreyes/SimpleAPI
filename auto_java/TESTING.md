@@ -16,7 +16,8 @@ Framework
 
 ###Bugs found during test execution
 
-GET endpoint
-- The documentation doesn´t explain which message should be returned when status code is 501 from GET.
+GET endpoint (TestFooGet failing on the last Scenario)
+- The documentation doesn't explain which message should be returned when status code is 501 from GET.
 - It isn´t allow double as input, if you introduce a double is managed like an integer.
 
+POST endpoint (TestFooPost should be pass all scenarios)

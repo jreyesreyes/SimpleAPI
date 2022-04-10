@@ -17,19 +17,6 @@ jobs:
     container: node:16.14.2-alpine3.15
 
     steps:
-    #- uses: thinkdolabs/curl@v1
-    - uses: dangmai/get-apt-package-version@v1.2.0
-      with:
-        ppa: nextcloud-devs/client
-        package: nextcloud-desktop
-        baseImage: ubuntu:focal
-        run: |
-          apt-get install sudo
-          sudo apt-get update
-          sudo apt-get install curl
-
-    - uses: docker/build-push-action@v2.10.0
-
     - uses: actions/checkout@v3
 
     - run: npm ci
@@ -39,12 +26,12 @@ jobs:
       run: yarn build
 
     - name: Build docker container
-      run: docker build -t dockerapiapp .
+      run: /usr/bin/docker build -t dockerapiapp .
 
     - name: Run docker container
       run: |
-        docker run -d -p 9999:9999 --name docker-api dockerapiapp
-        docker container ls
+        /usr/bin/docker run -d -p 9999:9999 --name docker-api dockerapiapp
+        /usr/bin/docker container ls
 
     - run: curl http://localhost:9999/api/foo/12
 

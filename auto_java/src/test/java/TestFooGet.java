@@ -23,6 +23,7 @@ public class TestFooGet {
         ApiResponse _response = _gets.getDivisibleNum("20");
 
         //Validate it returns 200 code with OK message
+        System.out.println("Scenario 1:" + _response.getApiRequestInfo());
         General.validateResponse(_response, 200, "OK");
     }
 
@@ -33,7 +34,7 @@ public class TestFooGet {
         ApiResponse _response = _gets.getDivisibleNum(sInput);
 
         //Validate it returns 400 code with ERROR: Value X is not a number message
-        System.out.println(_response.getApiRequestInfo());
+        System.out.println("Scenario 2:" + _response.getApiRequestInfo());
         General.validateResponse(_response, 400, "ERROR: Value " + sInput + " is not a number");
     }
 
@@ -44,7 +45,7 @@ public class TestFooGet {
         ApiResponse _response = _gets.getDivisibleNum(sNum);
 
         //Validate it returns 501 code
-        System.out.println(_response.getApiRequestInfo());
+        System.out.println("Scenario 3.1:" + _response.getApiRequestInfo());
         General.validateResponse(_response, 501, "ERROR: Number " + sNum + " is not divisible by 2");
 
         sNum = "12.5";
@@ -52,7 +53,7 @@ public class TestFooGet {
         _response = _gets.getDivisibleNum(sNum);
 
         //Validate it returns 501 code
-        System.out.println(_response.getApiRequestInfo());
+        System.out.println("Scenario 3.2:" + _response.getApiRequestInfo());
         General.validateResponse(_response, 501, "ERROR: Number " + sNum + " is not divisible by 2");
     }
 }

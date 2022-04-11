@@ -5,7 +5,7 @@ This is a Koa simple application used for testing purposes that exposes few endp
 ### First, You must
 
 1. Fork the public repository https://github.com/GanazHQ/SimpleAPI.git
-2. Have Node 16.x.x installed locally
+2. Have Node 16.x.x installed locally.
 3. Have a Rest client installed locally, preferably Postman to quickly test the endpoints
 4. You must know that this project has Jest configured by default, but you are able to use any other testing framework
 
